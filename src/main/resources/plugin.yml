@@ -1,0 +1,14 @@
+name: CueballRTP
+version: ${project.version}
+main: com.rocketmail.vaishnavanil.cueballrtp.CueballRTP
+api-version: 1.13
+prefix: CueballRTP
+authors: [Yugi]
+description: Randomly teleports player around a location
+website: Vshnv.github.io
+commands:
+  rtp:
+    description: Safely teleports player to random location in world
+    permission: rtp.use
+    permission-message: You do not have permission to use this command
+    usage: /rtp

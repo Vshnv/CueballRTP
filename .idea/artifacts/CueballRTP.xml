@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CueballRTP">
+    <output-path>$PROJECT_DIR$/../../PaperServer/plugins</output-path>
+    <root id="archive" name="CueballRTP.jar">
+      <element id="module-output" name="CueballRTP" />
+    </root>
+  </artifact>
+</component>
