@@ -6,9 +6,7 @@ import org.bukkit.entity.Player;
 import java.io.*;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class CooldownHandler {
     private Map<UUID, Instant> epochMap;
@@ -94,5 +92,18 @@ public class CooldownHandler {
         }else {
             return 0f;
         }
+    }
+
+    public void cleanUp(){
+        if(epochMap.isEmpty())return;
+        List<UUID> toClean = new ArrayList<>();
+        for(UUID id: epochMap.keySet()){
+            Instant then = epochMap.get(id);
+            if(Duration.between(then,Instant.now()).toHours() >= CueballRTP.getConfigHandler().getCooldown()){
+                toClean.add(id);
+            }
+        }
+        if(toClean.isEmpty())return;
+        toClean.forEach(c->epochMap.remove(c));
     }
 }

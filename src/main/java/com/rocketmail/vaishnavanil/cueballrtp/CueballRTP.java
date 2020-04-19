@@ -26,12 +26,14 @@ public final class CueballRTP extends JavaPlugin {
         config.load();
 
         cd.load();
-
+        cd.cleanUp();
         getServer().getPluginCommand("rtp").setExecutor(new CommandRTP());
     }
 
     @Override
     public void onDisable() {
+
+        cd.cleanUp();
         cd.save();
     }
 

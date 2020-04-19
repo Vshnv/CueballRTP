@@ -11,9 +11,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.time.Duration;
+import java.time.Instant;
+
 public class CommandRTP implements CommandExecutor {
+    private Instant lastUse = Instant.now();
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if(Duration.between(lastUse,Instant.now()).toHours() > 2f){
+            CueballRTP.getCooldownHandler().cleanUp();
+        }
         if(!(sender instanceof Player)){
             sender.sendMessage("This command is limited to Players.");
             return true;
